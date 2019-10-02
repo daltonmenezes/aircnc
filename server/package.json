@@ -1,0 +1,20 @@
+{
+  "name": "aircnc-server",
+  "description": "Airbnb like (Air Coffee & Code) to booking spots for developers",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "author": "Dalton Menezes",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.3",
+    "multer": "^1.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
+  }
+}
