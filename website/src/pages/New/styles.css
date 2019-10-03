@@ -1,0 +1,22 @@
+label#thumbnail {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  align-items: center;
+  border: 1px dashed #ddd;
+  background-size: cover;
+  height: 160px;
+  cursor: pointer;
+}
+
+label#thumbnail input {
+  display: none;
+}
+
+label#thumbnail.has-thumbnail {
+  border: 0;
+}
+
+label#thumbnail.has-thumbnail img {
+  display: none;
+}

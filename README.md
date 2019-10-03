@@ -1,7 +1,7 @@
 # Aircnc
 [WIP] Airbnb like (Air Coffee &amp; Code) to booking spots for developers.
 
->This project comes from Rocketseat's omnistack week crash course #9.
+>This project comes from Rocketseat's omnistack week crash course #9 with my modifications.
 
 # Stack
 - ReactJS (front-end)
