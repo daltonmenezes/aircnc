@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "dev:server": "nodemon server/src/server.js",
-    "dev:website": "cd website && yarn start"
+    "dev:website": "cd website && yarn start",
+    "dev:mobile": "cd mobile && yarn start"
   },
   "devDependencies": {
     "nodemon": "^1.19.3"
