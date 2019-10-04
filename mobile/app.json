@@ -24,7 +24,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.daltonmenezes.aircnc"
+    },
+    "android": {
+      "package": "com.daltonmenezes.aircnc"
     },
     "androidStatusBar": {
       "barStyle": "dark-content",
