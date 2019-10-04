@@ -3,10 +3,7 @@ import React, { useState, useEffect } from 'react'
 import {
   SafeAreaView,
   Text,
-  TextInput,
   Alert,
-  DatePickerAndroid,
-  DatePickerIOS,
   Platform,
   TouchableOpacity,
   AsyncStorage,
@@ -15,13 +12,19 @@ import {
 
 import api from '../services/api'
 
-export default ({ navigation }) => {
-  const [date, setDate] = useState(new Date())
-  const id = navigation.getParam('id')
+const DatePicker =
+  Platform.OS === 'ios'
+    ? require('DatePickerIOS')
+    : require('../components/DatePickerAndroid')
 
-  useEffect(() => {
-    handleAndroidDatePicker()
-  }, [])
+export default ({ navigation }) => {
+  const initalDate =
+    Platform.OS === 'ios'
+      ? new Date()
+      : new Date().toDateString()
+
+  const [date, setDate] = useState(initalDate)
+  const id = navigation.getParam('id')
 
   const handleSubmit = async () => {
     const user_id =
@@ -43,39 +46,11 @@ export default ({ navigation }) => {
   const handleCancel = () =>
     navigation.navigate('List')
 
-  const handleAndroidDatePicker = async () => {
-    try {
-      const {
-        action,
-        year,
-        month,
-        day
-      } = await DatePickerAndroid.open({ date: new Date() })
-
-      if (action !== DatePickerAndroid.dismissedAction) {
-          setDate(new Date(year, month, day).toDateString())
-
-          return new Date(year, month, day).toDateString()
-      }
-    } catch ({ code, message }) {
-      console.warn('Cannot open date picker', message)
-    }
-  }
-
   return (
-
     <SafeAreaView style={styles.container}>
-    <Text style={styles.label}>DATE *</Text>
+      <Text style={styles.label}>DATE *</Text>
 
-    {Platform.OS === 'ios'
-      ? <DatePickerIOS date={date} onDateChange={setDate} />
-      : <Text
-          style={styles.datePickerAndroid}
-          onPress={handleAndroidDatePicker}
-        >
-          {String(date)}
-        </Text>
-    }
+      {<DatePicker date={date} onDateChange={setDate} />}
 
       <TouchableOpacity onPress={handleSubmit} style={styles.button}>
         <Text style={styles.buttonText}>
@@ -133,11 +108,5 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontWeight: 'bold',
     fontSize: 15
-  },
-
-  datePickerAndroid: {
-    fontWeight: 'bold',
-    fontSize: 25,
-    marginBottom: 20
   }
 })
