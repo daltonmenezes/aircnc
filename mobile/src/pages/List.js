@@ -8,6 +8,7 @@ import {
   Image,
   Alert,
   AsyncStorage,
+  TouchableOpacity,
   StyleSheet
 } from 'react-native'
 
@@ -15,7 +16,7 @@ import SpotList from '../components/SpotList'
 
 import logo from '../assets/logo.png'
 
-export default () => {
+export default ({ navigation }) => {
   const [technologies, setTechnologies] = useState([])
 
   useEffect(() => {
@@ -45,9 +46,19 @@ export default () => {
       })
   }, [])
 
+  const handleLogout = () => {
+    AsyncStorage
+      .setItem('user', '')
+      .then(() => {
+        navigation.navigate('Login')
+      })
+  }
+
   return (
     <SafeAreaView style={styles.container}>
-      <Image style={styles.logo} source={logo} />
+      <TouchableOpacity onPress={handleLogout}>
+        <Image style={styles.logo} source={logo} />
+      </TouchableOpacity>
 
       <ScrollView>
         {technologies.map(tech =>
