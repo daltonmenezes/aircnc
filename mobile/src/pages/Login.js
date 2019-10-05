@@ -29,6 +29,16 @@ export default ({ navigation }) => {
       )
   }, [])
 
+  useEffect(() => {
+    AsyncStorage
+      .getItem('technologies')
+      .then(techs =>
+        techs
+          ? setTechnologies(techs)
+          : ''
+      )
+  }, [])
+
   const handleSubmit = async () => {
     const response =
       await api.post('/sessions', { email })
