@@ -19,12 +19,14 @@
 - Mobile
   - React Native
   - Expo
+  - Socket.io
   - Axios
   - \* [check package.json](/mobile/package.json)  
 
 - Server
   - Node.js
   - Express
+  - Socket.io
   - MongoDB
   - Mongoose
   - Multer
