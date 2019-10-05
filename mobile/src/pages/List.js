@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import socketio from 'socket.io-client'
+import serverConfig from '../config/server-config'
 
 import {
   SafeAreaView,
   ScrollView,
   Image,
+  Alert,
   AsyncStorage,
   StyleSheet
 } from 'react-native'
@@ -14,6 +17,20 @@ import logo from '../assets/logo.png'
 
 export default () => {
   const [technologies, setTechnologies] = useState([])
+
+  useEffect(() => {
+    AsyncStorage
+      .getItem('user')
+      .then(user_id => {
+        const socket = socketio(serverConfig.URL, {
+          query: { user_id }
+        })
+
+        socket.on('booking-response', booking =>
+          Alert.alert(`Your booking request at ${booking.spot.company} for ${booking.date} was ${booking.approved ? 'APPROVED' : 'REJECTED'}`)
+        )
+      })
+  }, [])
 
   useEffect(() => {
     AsyncStorage

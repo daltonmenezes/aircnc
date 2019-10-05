@@ -1,5 +1,6 @@
 import axios from 'axios'
+import serverConfig from '../config/server-config'
 
 export default axios.create({
-  baseURL: 'http://localhost:3333'
+  baseURL: serverConfig.URL
 })
