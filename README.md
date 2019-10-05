@@ -33,3 +33,5 @@
   - Dotenv
   - \* [check package.json](/server/package.json)
 
+# License
+[MIT License](https://github.com/daltonmenezes/aircnc/blob/master/LICENSE)
