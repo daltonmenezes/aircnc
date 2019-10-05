@@ -3,7 +3,9 @@
 </p>
 
 <p align="center">
-[WIP] Airbnb like (Air Coffee &amp; Code) to booking spots for developers.
+Airbnb like (Air Coffee &amp; Code) to booking spots for developers.
+
+<img src="banner.png" alt="project banner"/>
 
 >This project was made for study purposes only and comes from Rocketseat's omnistack week crash course #9 with my own modifications
 </p>
