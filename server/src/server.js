@@ -16,7 +16,7 @@
   const io = socketio(server)
   const connectedUsers = {}
 
-  mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0-nmejl.mongodb.net/${process.env.MONGO_COLLECTION}?retryWrites=true&w=majority`, {
+  mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0-nmejl.mongodb.net/${process.env.MONGO_DATABASE}?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
