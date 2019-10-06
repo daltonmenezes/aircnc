@@ -15,7 +15,7 @@ See it in action: https://youtu.be/XO1CqaiJmjA
 
 <br/>
                 
-<blockquote>
+<blockquote alt="[ignore]">
   <p>If you want to see <strong>videos played within markdown files on GitHub</strong> and more, install <a href="https://github.com/daltonmenezes/stylish-hub">Stylish-hub</a> extension and <strong>give superpowers for your GitHub</strong>.
   </p>
 </blockquote>
