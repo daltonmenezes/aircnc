@@ -19,7 +19,7 @@ See it in action: https://youtu.be/XO1CqaiJmjA
 
 </p>
 
-<p alt="type:video autoplay" value="https://youtu.be/XO1CqaiJmjA"></p>
+<p alt="type:video autoplay" value="https://www.youtube.com/watch?v=XO1CqaiJmjA"></p>
 
 # Stack
 
