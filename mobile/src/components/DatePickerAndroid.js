@@ -6,7 +6,7 @@ import {
   StyleSheet
 } from 'react-native'
 
-module.exports = ({ date, onDateChange }) => {
+module.exports = ({ date, onDateChange, moment }) => {
   useEffect(() => {
     handleDatePicker()
   }, [])
@@ -21,12 +21,17 @@ module.exports = ({ date, onDateChange }) => {
       } = await DatePickerAndroid.open({ date: new Date() })
 
       if (action !== DatePickerAndroid.dismissedAction) {
-          const pickedDate = new Date(year, month, day).toDateString()
+          const pickedDate = new Date(year, month, day)
 
-          onDateChange(pickedDate)
+          onDateChange(moment(pickedDate).format('LL'))
 
           return pickedDate
       }
+
+      !date
+        ? onDateChange(moment().format('LL'))
+        : ''
+
     } catch ({ code, message }) {
       console.warn('Cannot open date picker', message)
     }

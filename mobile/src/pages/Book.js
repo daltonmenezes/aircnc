@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import * as Localization from 'expo-localization'
+import moment from 'moment'
+import 'moment/min/locales'
 
 import {
   SafeAreaView,
@@ -12,18 +15,23 @@ import {
 
 import api from '../services/api'
 
+const deviceLanguage =
+  Localization.locale
+    .replace(/_/g, '-')
+    .toLowerCase()
+
+moment.locale([
+  deviceLanguage,
+  'pt-br'
+])
+
 const DatePicker =
   Platform.OS === 'ios'
     ? require('DatePickerIOS')
     : require('../components/DatePickerAndroid')
 
 export default ({ navigation }) => {
-  const initalDate =
-    Platform.OS === 'ios'
-      ? new Date()
-      : new Date().toDateString()
-
-  const [date, setDate] = useState(initalDate)
+  const [date, setDate] = useState(Platform.OS === 'ios' ? new Date(): '')
   const id = navigation.getParam('id')
 
   const handleSubmit = async () => {
@@ -33,7 +41,7 @@ export default ({ navigation }) => {
     await api.post(`/spots/${id}/bookings`, {
       date:
         Platform.OS === 'ios'
-          ? date.toDateString()
+          ? moment(date).format('LL')
           : date
     }, {
       headers: { user_id }
@@ -50,7 +58,12 @@ export default ({ navigation }) => {
     <SafeAreaView style={styles.container}>
       <Text style={styles.label}>DATE *</Text>
 
-      {<DatePicker date={date} onDateChange={setDate} />}
+      {<DatePicker
+          date={date}
+          onDateChange={setDate}
+          locale={deviceLanguage}
+          moment={moment}
+        />}
 
       <TouchableOpacity onPress={handleSubmit} style={styles.button}>
         <Text style={styles.buttonText}>
