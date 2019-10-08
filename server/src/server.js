@@ -3,6 +3,10 @@
 
   process.env.internalIP = await require('internal-ip').v4()
 
+  if (!process.env.PORT) {
+      process.env.PORT = 3333
+  }
+
   const path = require('path')
   const http = require('http')
   const mongoose = require('mongoose')
@@ -39,5 +43,5 @@
   app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads')))
   app.use(routes)
 
-  server.listen(process.env.PORT || 3333)
+  server.listen(process.env.PORT)
 })()
