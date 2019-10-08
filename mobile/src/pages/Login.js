@@ -21,20 +21,20 @@ export default ({ navigation }) => {
 
   useEffect(() => {
     AsyncStorage
-      .getItem('user')
-      .then(user =>
-        user
-          ? navigation.navigate('List')
+      .getItem('technologies')
+      .then(techs =>
+        techs
+          ? setTechnologies(techs)
           : ''
       )
   }, [])
 
   useEffect(() => {
     AsyncStorage
-      .getItem('technologies')
-      .then(techs =>
-        techs
-          ? setTechnologies(techs)
+      .getItem('user')
+      .then(user =>
+        user
+          ? navigation.navigate('List')
           : ''
       )
   }, [])
